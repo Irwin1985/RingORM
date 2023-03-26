@@ -11,9 +11,9 @@ COLUMN_DECIMAL = 9
 
 
 func Main
-	cDB = "vir2022"	
-	cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=PC-IRWIN\SQLIRWIN;Database=" + cDB + ";Uid=sa;Pwd=Subifor2012"		
-	cTable = "g10cav22"	
+	cDB = "my_db_name"	
+	cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=**THE SERVER**;Database=" + cDB + ";Uid=sa;Pwd=***"		
+	cTable = "my_table"	
 	// testReference(cConnStr, cTable)
 	aData = query()
 	? aData[1][:serie]
@@ -37,7 +37,7 @@ func testRingORM
 		oDBManager = new DBManager	
 		cDB = "vir2022"	
 		cTable = "g10cav22"
-		cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=PC-IRWIN\SQLIRWIN;Database=" + cDB + ";Uid=sa;Pwd=Subifor2012"	
+		cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=**THE SERVER**;Database=" + cDB + ";Uid=sa;Pwd=***"		
 		// test(cConnStr)
 		
 		oDBManager.connect(cConnStr)
@@ -57,8 +57,8 @@ func testRingORM
 func test(tcConnStr)
 		h = odbc_init()
 		odbc_connect(h, tcConnStr)
-		odbc_execute(h, "use vir2022")
-		odbc_columns(h, "g10cav22")
+		odbc_execute(h, "use northwind")
+		odbc_columns(h, "Customers")
 		nCol = odbc_colcount(h)
 		while odbc_fetch(h)			
 			? odbc_getdata(h, COLUMN_NAME)
@@ -71,7 +71,7 @@ func test(tcConnStr)
 func query
 	c = clock()
 	h = odbc_init()
-	cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=PC-IRWIN\SQLIRWIN;Database=vir2022;Uid=sa;Pwd=Subifor2012"
+	cConnStr = "Driver={ODBC Driver 17 for SQL Server};Server=**THE SERVER**;Database=" + cDB + ";Uid=sa;Pwd=***"		
 	odbc_connect(h, cConnStr)
 	odbc_execute(h, "use vir2022")
 
